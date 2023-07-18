@@ -5,6 +5,7 @@ import { TypeOrmConfigService } from './shared/typeorm/typeorm.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
 import { DataSource } from 'typeorm';
+import { UsersModule } from './users/users.module';
 
 
 const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
