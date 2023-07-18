@@ -6,14 +6,12 @@ import { User } from '../entities/user.entity';
 
 @Injectable()
 export class UsersService {
-  constructor( private dataSource: DataSource) {}
   create(createUserDto: CreateUserDto) {
     return 'This action adds a new user';
   }
 
-  async findAll() {
-    let data = await this.dataSource.manager.find(User)
-    return `This action returns all users ${data}`;
+  findAll() {
+    return `This action returns all users`;
   }
 
   findOne(id: number) {
