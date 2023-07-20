@@ -13,10 +13,10 @@ exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const env_helper_1 = require("./common/helper/env.helper");
 const config_1 = require("@nestjs/config");
-const typeorm_service_1 = require("./shared/typeorm/typeorm.service");
-const typeorm_1 = require("@nestjs/typeorm");
 const users_module_1 = require("./users/users.module");
-const typeorm_2 = require("typeorm");
+const typeorm_1 = require("typeorm");
+const database_module_1 = require("./database/database.module");
+const Joi = require("@hapi/joi");
 const envFilePath = (0, env_helper_1.getEnvPath)(`${__dirname}/common/envs`);
 let AppModule = class AppModule {
     constructor(dataSource) {
@@ -26,14 +26,23 @@ let AppModule = class AppModule {
 AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            config_1.ConfigModule.forRoot({ envFilePath, isGlobal: true }),
-            typeorm_1.TypeOrmModule.forRootAsync({ useClass: typeorm_service_1.TypeOrmConfigService }),
+            config_1.ConfigModule.forRoot({
+                validationSchema: Joi.object({
+                    POSTGRES_HOST: Joi.string().required(),
+                    POSTGRES_PORT: Joi.number().required(),
+                    POSTGRES_USER: Joi.string().required(),
+                    POSTGRES_PASSWORD: Joi.string().required(),
+                    POSTGRES_DATABASE: Joi.string().required(),
+                    PORT: Joi.number(),
+                }),
+            }),
+            database_module_1.DatabaseModule,
             users_module_1.UsersModule,
         ],
         controllers: [],
         providers: [],
     }),
-    __metadata("design:paramtypes", [typeorm_2.DataSource])
+    __metadata("design:paramtypes", [typeorm_1.DataSource])
 ], AppModule);
 exports.AppModule = AppModule;
 //# sourceMappingURL=app.module.js.map

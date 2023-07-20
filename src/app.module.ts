@@ -5,20 +5,29 @@ import { TypeOrmConfigService } from './shared/typeorm/typeorm.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
 import { DataSource } from 'typeorm';
-import { UsersModule } from './users/users.module';
-
+import { DatabaseModule } from './database/database.module';
+import * as Joi from '@hapi/joi';
 
 const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ envFilePath, isGlobal: true }),
-    TypeOrmModule.forRootAsync({ useClass: TypeOrmConfigService }),
+    ConfigModule.forRoot({
+      validationSchema: Joi.object({
+        POSTGRES_HOST: Joi.string().required(),
+        POSTGRES_PORT: Joi.number().required(),
+        POSTGRES_USER: Joi.string().required(),
+        POSTGRES_PASSWORD: Joi.string().required(),
+        POSTGRES_DATABASE: Joi.string().required(),
+        PORT: Joi.number(),
+      }),
+    }),
+    DatabaseModule,
     UsersModule,
   ],
   controllers: [],
   providers: [],
 })
 export class AppModule {
-  constructor(private dataSource: DataSource){}
+  constructor(private dataSource: DataSource) {}
 }

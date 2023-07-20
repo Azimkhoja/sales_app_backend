@@ -23,11 +23,13 @@
     "orm:mac:push": "rm -rf build && yarn build && yarn typeorm migration:run -d ./src/utils/data-source.ts"
   },
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
     "@nestjs/common": "^9.0.0",
     "@nestjs/config": "^3.0.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^9.4.3",
+    "@nestjs/swagger": "^7.1.1",
     "@nestjs/typeorm": "^10.0.0",
     "@types/config": "^3.3.0",
     "class-transformer": "^0.5.1",
