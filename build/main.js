@@ -9,7 +9,7 @@ const swagger_option_1 = require("./options/swagger.option");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     const configService = app.get(config_1.ConfigService);
-    app.setGlobalPrefix('api');
+    app.setGlobalPrefix('/api');
     app.enableCors();
     app.useGlobalPipes(new common_1.ValidationPipe({ transform: true }));
     const swaggerDocument = swagger_1.SwaggerModule.createDocument(app, swagger_option_1.swaggerConfig);
