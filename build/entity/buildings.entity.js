@@ -32,8 +32,7 @@ __decorate([
     __metadata("design:type", Number)
 ], Buildings.prototype, "floor_number", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)((type) => apartments_entity_1.Apartments, (apartment) => apartment),
-    (0, typeorm_1.JoinColumn)({ name: 'building_id' }),
+    (0, typeorm_1.OneToMany)((type) => apartments_entity_1.Apartments, (apartment) => apartment.building_id),
     __metadata("design:type", apartments_entity_1.Apartments)
 ], Buildings.prototype, "apartments", void 0);
 Buildings = __decorate([

@@ -35,6 +35,16 @@ const sale_details_service_1 = require("./service/sale_details.service");
 const roles_service_1 = require("./service/roles.service");
 const user_roles_service_1 = require("./service/user-roles.service");
 const sales_service_1 = require("./service/sales.service");
+const auth_module_1 = require("./options/jwt-service/auth.module");
+const users_module_1 = require("./modules/users/users.module");
+const buildings_module_1 = require("./modules/buildings/buildings.module");
+const apartments_module_1 = require("./modules/apartments/apartments.module");
+const clients_module_1 = require("./modules/clients/clients.module");
+const payment_details_module_1 = require("./modules/payment_details/payment_details.module");
+const sale_details_module_1 = require("./modules/sale_details/sale_details.module");
+const sales_module_1 = require("./modules/sales/sales.module");
+const roles_module_1 = require("./modules/roles/roles.module");
+const payment_methods_module_1 = require("./modules/payment_methods/payment_methods.module");
 const Joi = require("@hapi/joi");
 let AppModule = class AppModule {
     constructor() { }
@@ -53,6 +63,16 @@ AppModule = __decorate([
                 }),
             }),
             database_module_1.DatabaseModule,
+            auth_module_1.AuthModule,
+            users_module_1.UsersModule,
+            buildings_module_1.BuildingsModule,
+            apartments_module_1.ApartmentsModule,
+            clients_module_1.ClientsModule,
+            payment_details_module_1.PaymentDetailsModule,
+            sale_details_module_1.SaleDetailsModule,
+            sales_module_1.SalesModule,
+            roles_module_1.RolesModule,
+            payment_methods_module_1.PaymentMethodsModule,
         ],
         controllers: [
             users_controller_1.UsersController,

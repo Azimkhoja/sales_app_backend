@@ -16,9 +16,9 @@ const apartments_entity_1 = require("./apartments.entity");
 let Price = class Price extends model_entity_1.default {
 };
 __decorate([
-    (0, typeorm_1.ManyToOne)((type) => apartments_entity_1.Apartments, (apartments) => apartments.id),
+    (0, typeorm_1.ManyToOne)((type) => apartments_entity_1.Apartments, (apartments) => apartments.price),
     (0, typeorm_1.JoinColumn)({ name: 'apartment_id' }),
-    __metadata("design:type", Array)
+    __metadata("design:type", apartments_entity_1.Apartments)
 ], Price.prototype, "apartments", void 0);
 __decorate([
     (0, typeorm_1.Column)(),

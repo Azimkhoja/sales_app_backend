@@ -18,21 +18,21 @@ const sale_details_entity_1 = require("./sale_details.entity");
 let Apartments = class Apartments extends model_entity_1.default {
 };
 __decorate([
-    (0, typeorm_1.ManyToOne)((type) => buildings_entity_1.Buildings, (building) => building),
+    (0, typeorm_1.ManyToOne)((type) => buildings_entity_1.Buildings, (building) => building.apartments),
     (0, typeorm_1.JoinColumn)({ name: 'building_id' }),
-    __metadata("design:type", Array)
+    __metadata("design:type", buildings_entity_1.Buildings)
 ], Apartments.prototype, "building_id", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, typeorm_1.Column)({ nullable: true }),
     __metadata("design:type", Number)
 ], Apartments.prototype, "rooms", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, typeorm_1.Column)({ nullable: true }),
     __metadata("design:type", Number)
 ], Apartments.prototype, "rooms_space", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)((type) => price_entity_1.Price, (price) => price.id),
-    __metadata("design:type", Array)
+    (0, typeorm_1.OneToMany)((type) => price_entity_1.Price, (price) => price.apartments),
+    __metadata("design:type", price_entity_1.Price)
 ], Apartments.prototype, "price", void 0);
 __decorate([
     (0, typeorm_1.OneToMany)((type) => sale_details_entity_1.Sale_details, (sales_details) => sales_details),

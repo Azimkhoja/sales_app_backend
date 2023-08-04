@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, JoinTable, OneToMany } from 'typeorm';
+import { Column, Entity, JoinColumn, OneToMany } from 'typeorm';
 import Model from './model.entity';
 import { Apartments } from './apartments.entity';
 
@@ -16,7 +16,6 @@ export class Buildings extends Model {
   @Column()
   floor_number: number;
 
-  @OneToMany((type) => Apartments, (apartment) => apartment)
-  @JoinColumn({ name: 'building_id' })
+  @OneToMany((type) => Apartments, (apartment) => apartment.building_id)
   apartments: Apartments;
 }

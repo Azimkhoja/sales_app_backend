@@ -24,6 +24,16 @@ import { SaleDetailsService } from './service/sale_details.service';
 import { RolesService } from './service/roles.service';
 import { UserRolesService } from './service/user-roles.service';
 import { SalesService } from './service/sales.service';
+import { AuthModule } from './options/jwt-service/auth.module';
+import { UsersModule } from './modules/users/users.module';
+import { BuildingsModule } from './modules/buildings/buildings.module';
+import { ApartmentsModule } from './modules/apartments/apartments.module';
+import { ClientsModule } from './modules/clients/clients.module';
+import { PaymentDetailsModule } from './modules/payment_details/payment_details.module';
+import { SaleDetailsModule } from './modules/sale_details/sale_details.module';
+import { SalesModule } from './modules/sales/sales.module';
+import { RolesModule } from './modules/roles/roles.module';
+import { PaymentMethodsModule } from './modules/payment_methods/payment_methods.module';
 import * as Joi from '@hapi/joi';
 
 @Module({
@@ -39,6 +49,16 @@ import * as Joi from '@hapi/joi';
       }),
     }),
     DatabaseModule,
+    AuthModule,
+    UsersModule,
+    BuildingsModule,
+    ApartmentsModule,
+    ClientsModule,
+    PaymentDetailsModule,
+    SaleDetailsModule,
+    SalesModule,
+    RolesModule,
+    PaymentMethodsModule,
   ],
   controllers: [
     UsersController,

@@ -4,9 +4,9 @@ import { Apartments } from './apartments.entity';
 
 @Entity('Price')
 export class Price extends Model {
-  @ManyToOne((type) => Apartments, (apartments) => apartments.id)
+  @ManyToOne((type) => Apartments, (apartments) => apartments.price)
   @JoinColumn({ name: 'apartment_id' })
-  apartments: Apartments[]
+  apartments: Apartments
 
   @Column()
   apartment_price: number;
