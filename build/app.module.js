@@ -45,6 +45,9 @@ const sale_details_module_1 = require("./modules/sale_details/sale_details.modul
 const sales_module_1 = require("./modules/sales/sales.module");
 const roles_module_1 = require("./modules/roles/roles.module");
 const payment_methods_module_1 = require("./modules/payment_methods/payment_methods.module");
+const town_controller_1 = require("./controller/town.controller");
+const town_service_1 = require("./service/town.service");
+const town_module_1 = require("./modules/town/town.module");
 const Joi = require("@hapi/joi");
 let AppModule = class AppModule {
     constructor() { }
@@ -73,6 +76,7 @@ AppModule = __decorate([
             sales_module_1.SalesModule,
             roles_module_1.RolesModule,
             payment_methods_module_1.PaymentMethodsModule,
+            town_module_1.TownModule,
         ],
         controllers: [
             users_controller_1.UsersController,
@@ -86,6 +90,7 @@ AppModule = __decorate([
             payment_methods_controller_1.PaymentMethodsController,
             sale_details_controller_1.SaleDetailsController,
             user_roles_controller_1.UserRolesController,
+            town_controller_1.TownController,
         ],
         providers: [
             users_service_1.UsersService,
@@ -99,6 +104,7 @@ AppModule = __decorate([
             roles_service_1.RolesService,
             user_roles_service_1.UserRolesService,
             sales_service_1.SalesService,
+            town_service_1.TownService,
         ],
     }),
     __metadata("design:paramtypes", [])

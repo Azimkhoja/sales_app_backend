@@ -17,38 +17,32 @@ const common_1 = require("@nestjs/common");
 const typeorm_1 = require("typeorm");
 const buildings_entity_1 = require("../entity/buildings.entity");
 const typeorm_2 = require("@nestjs/typeorm");
-const apartments_entity_1 = require("../entity/apartments.entity");
-const price_entity_1 = require("../entity/price.entity");
 let BuildingsService = class BuildingsService {
-    constructor(apartmentRepo, buildingRepository, dataSource) {
-        this.apartmentRepo = apartmentRepo;
+    constructor(buildingRepository) {
         this.buildingRepository = buildingRepository;
-        this.dataSource = dataSource;
     }
-    async createBuilding(createBuildingDto, createApartmentDto, createPriceDto) {
-        let apartment;
-        const building = await this.buildingRepository
-            .save(createBuildingDto)
-            .then((data) => {
-            apartment = this.buildingRepository.manager
-                .getRepository(apartments_entity_1.Apartments)
-                .insert({ building_id: data })
-                .then((data) => {
-                return apartment.then((value) => {
-                    this.apartmentRepo.manager.getRepository(price_entity_1.Price).insert({});
-                });
+    async createBuilding(createBuildingDto) {
+        let buildings = [];
+        let range = createBuildingDto.floor_number *
+            createBuildingDto.apartment_number *
+            createBuildingDto.entrance_number;
+        for (let room = 1; room <= range; room++) {
+            buildings.push({
+                name: 'Bino1',
+                entrance_number: 2,
+                floor_number: 1,
+                apartment_number: room,
+                res_town_id: 6,
             });
-        });
-        return building;
+        }
+        await this.buildingRepository.save(buildings);
+        console.log(buildings);
     }
 };
 BuildingsService = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, typeorm_2.InjectRepository)(apartments_entity_1.Apartments)),
-    __param(1, (0, typeorm_2.InjectRepository)(buildings_entity_1.Buildings)),
-    __metadata("design:paramtypes", [typeorm_1.Repository,
-        typeorm_1.Repository,
-        typeorm_1.DataSource])
+    __param(0, (0, typeorm_2.InjectRepository)(buildings_entity_1.Buildings)),
+    __metadata("design:paramtypes", [typeorm_1.Repository])
 ], BuildingsService);
 exports.BuildingsService = BuildingsService;
 //# sourceMappingURL=buildings.service.js.map

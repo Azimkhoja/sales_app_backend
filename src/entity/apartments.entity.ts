@@ -15,7 +15,7 @@ import { Sale_details } from './sale_details.entity';
 export class Apartments extends Model {
   @ManyToOne((type) => Buildings, (building) => building.apartments)
   @JoinColumn({ name: 'building_id' })
-  building_id: Buildings;
+  building_id: Buildings[];
 
   @Column({ nullable: true })
   rooms: number;
@@ -24,7 +24,7 @@ export class Apartments extends Model {
   rooms_space: number;
 
   @OneToMany((type) => Price, (price) => price.apartments)
-  price: Price;
+  price: Price[];
 
   @OneToMany((type) => Sale_details, (sales_details) => sales_details)
   sales_details: Sale_details[];

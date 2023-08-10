@@ -1,6 +1,7 @@
 export declare class CreateBuildingDto {
     name: string;
-    building_number: string;
-    entrance_number: string;
+    entrance_number: number;
     floor_number: number;
+    apartment_number: number;
+    res_town_id: number;
 }

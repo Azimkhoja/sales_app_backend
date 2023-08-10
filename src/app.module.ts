@@ -34,6 +34,9 @@ import { SaleDetailsModule } from './modules/sale_details/sale_details.module';
 import { SalesModule } from './modules/sales/sales.module';
 import { RolesModule } from './modules/roles/roles.module';
 import { PaymentMethodsModule } from './modules/payment_methods/payment_methods.module';
+import { TownController } from './controller/town.controller';
+import { TownService } from './service/town.service';
+import { TownModule } from './modules/town/town.module';
 import * as Joi from '@hapi/joi';
 
 @Module({
@@ -59,6 +62,7 @@ import * as Joi from '@hapi/joi';
     SalesModule,
     RolesModule,
     PaymentMethodsModule,
+    TownModule,
   ],
   controllers: [
     UsersController,
@@ -72,6 +76,7 @@ import * as Joi from '@hapi/joi';
     PaymentMethodsController,
     SaleDetailsController,
     UserRolesController,
+    TownController,
   ],
   providers: [
     UsersService,
@@ -85,6 +90,7 @@ import * as Joi from '@hapi/joi';
     RolesService,
     UserRolesService,
     SalesService,
+    TownService,
   ],
 })
 export class AppModule {

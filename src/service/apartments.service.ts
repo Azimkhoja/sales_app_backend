@@ -1,7 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { DataSource } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Apartments } from 'src/entity/apartments.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class ApartmentsService {
-  constructor(private readonly dataSource: DataSource) {}
+  constructor(
+    @InjectRepository(Apartments)
+    private readonly apartmentRepository: Repository<Apartments>,
+  ) {}
 }

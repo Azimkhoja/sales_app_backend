@@ -12,20 +12,24 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ApartmentsService = void 0;
+exports.TownService = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
-const apartments_entity_1 = require("../entity/apartments.entity");
+const town_entity_1 = require("../entity/town.entity");
 const typeorm_2 = require("typeorm");
-let ApartmentsService = class ApartmentsService {
-    constructor(apartmentRepository) {
-        this.apartmentRepository = apartmentRepository;
+let TownService = class TownService {
+    constructor(townRepository) {
+        this.townRepository = townRepository;
+    }
+    async create(createTownDto) {
+        const newTown = await this.townRepository.save(createTownDto);
+        return { status: 201, data: newTown, message: 'Town created successfully' };
     }
 };
-ApartmentsService = __decorate([
+TownService = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, typeorm_1.InjectRepository)(apartments_entity_1.Apartments)),
+    __param(0, (0, typeorm_1.InjectRepository)(town_entity_1.Towns)),
     __metadata("design:paramtypes", [typeorm_2.Repository])
-], ApartmentsService);
-exports.ApartmentsService = ApartmentsService;
-//# sourceMappingURL=apartments.service.js.map
+], TownService);
+exports.TownService = TownService;
+//# sourceMappingURL=town.service.js.map

@@ -9,37 +9,42 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Apartments = void 0;
+exports.Towns = void 0;
 const typeorm_1 = require("typeorm");
 const model_entity_1 = require("./model.entity");
 const buildings_entity_1 = require("./buildings.entity");
-const price_entity_1 = require("./price.entity");
-const sale_details_entity_1 = require("./sale_details.entity");
-let Apartments = class Apartments extends model_entity_1.default {
+let Towns = class Towns extends model_entity_1.default {
 };
 __decorate([
-    (0, typeorm_1.ManyToOne)((type) => buildings_entity_1.Buildings, (building) => building.apartments),
-    (0, typeorm_1.JoinColumn)({ name: 'building_id' }),
-    __metadata("design:type", Array)
-], Apartments.prototype, "building_id", void 0);
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Towns.prototype, "name", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", Number)
+], Towns.prototype, "region_id", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", Number)
+], Towns.prototype, "district_id", void 0);
 __decorate([
     (0, typeorm_1.Column)({ nullable: true }),
-    __metadata("design:type", Number)
-], Apartments.prototype, "rooms", void 0);
+    __metadata("design:type", String)
+], Towns.prototype, "address", void 0);
 __decorate([
     (0, typeorm_1.Column)({ nullable: true }),
-    __metadata("design:type", Number)
-], Apartments.prototype, "rooms_space", void 0);
+    __metadata("design:type", String)
+], Towns.prototype, "contact_number", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)((type) => price_entity_1.Price, (price) => price.apartments),
-    __metadata("design:type", Array)
-], Apartments.prototype, "price", void 0);
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", String)
+], Towns.prototype, "logo", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)((type) => sale_details_entity_1.Sale_details, (sales_details) => sales_details),
+    (0, typeorm_1.OneToMany)(() => buildings_entity_1.Buildings, (building) => building.town),
     __metadata("design:type", Array)
-], Apartments.prototype, "sales_details", void 0);
-Apartments = __decorate([
-    (0, typeorm_1.Entity)('Apartments')
-], Apartments);
-exports.Apartments = Apartments;
-//# sourceMappingURL=apartments.entity.js.map
+], Towns.prototype, "buildings", void 0);
+Towns = __decorate([
+    (0, typeorm_1.Entity)('Towns')
+], Towns);
+exports.Towns = Towns;
+//# sourceMappingURL=town.entity.js.map

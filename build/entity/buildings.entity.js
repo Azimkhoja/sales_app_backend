@@ -13,19 +13,21 @@ exports.Buildings = void 0;
 const typeorm_1 = require("typeorm");
 const model_entity_1 = require("./model.entity");
 const apartments_entity_1 = require("./apartments.entity");
+const town_entity_1 = require("./town.entity");
 let Buildings = class Buildings extends model_entity_1.default {
 };
+__decorate([
+    (0, typeorm_1.ManyToOne)(type => town_entity_1.Towns, town => town.buildings),
+    (0, typeorm_1.JoinColumn)({ name: 'res_town_id', referencedColumnName: 'id' }),
+    __metadata("design:type", town_entity_1.Towns)
+], Buildings.prototype, "town", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Buildings.prototype, "name", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
-], Buildings.prototype, "building_number", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
+    __metadata("design:type", Number)
 ], Buildings.prototype, "entrance_number", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
@@ -33,8 +35,12 @@ __decorate([
 ], Buildings.prototype, "floor_number", void 0);
 __decorate([
     (0, typeorm_1.OneToMany)((type) => apartments_entity_1.Apartments, (apartment) => apartment.building_id),
-    __metadata("design:type", apartments_entity_1.Apartments)
+    __metadata("design:type", Array)
 ], Buildings.prototype, "apartments", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", Number)
+], Buildings.prototype, "apartment_number", void 0);
 Buildings = __decorate([
     (0, typeorm_1.Entity)('Buildings')
 ], Buildings);
